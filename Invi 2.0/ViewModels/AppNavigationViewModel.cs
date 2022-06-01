@@ -1,23 +1,27 @@
 ﻿using Invi_2._0.Models;
-using Invi_2._0.Models.Data;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Invi_2._0.ViewModels
 {
-    class NavigationViewModel : INotifyPropertyChanged
+     class AppNavigationViewModel : INotifyPropertyChanged
     {
-        private Page AppMainWindow;
-        private Page AuthPage;
-
+        private Page DevicesPage;
+       
         private Page _currentPage;
         public Page CurrentPage
         {
             get
             {
                 return _currentPage;
+
             }
             set
             {
@@ -27,22 +31,12 @@ namespace Invi_2._0.ViewModels
         }
 
         UserModel userModel = new UserModel();
-      
-        public NavigationViewModel()
+
+
+        public AppNavigationViewModel()
         {
-            AppMainWindow = new Views.AppMainWindow();
-            AuthPage = new Views.AuthPage();
-
-            UserModel user = new UserModel();
-
-            if (user.SearchUser())
-            {
-                CurrentPage = AppMainWindow;
-            }
-            else
-            {
-                CurrentPage = AuthPage;
-            }
+            DevicesPage = new Views.DevisesPage();
+            CurrentPage = DevicesPage;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -53,5 +47,7 @@ namespace Invi_2._0.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
-    }
+     }
+
 }
+

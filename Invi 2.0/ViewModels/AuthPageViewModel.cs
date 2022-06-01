@@ -14,7 +14,7 @@ using System.Windows;
 
 namespace Invi_2._0.ViewModels
 {
-    class StartPageViewModel : INotifyPropertyChanged
+    class AuthPageViewModel : INotifyPropertyChanged
     {
         private UserModel UserModel;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -51,7 +51,7 @@ namespace Invi_2._0.ViewModels
             }
         }
 
-        public StartPageViewModel() 
+        public AuthPageViewModel() 
         {
             UserModel = new UserModel();
         }

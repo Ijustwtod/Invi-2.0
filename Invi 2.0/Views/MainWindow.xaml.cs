@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace Invi_2._0
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -40,6 +37,5 @@ namespace Invi_2._0
         {
             Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
-
     }
 }

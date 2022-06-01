@@ -1,0 +1,42 @@
+﻿<Page x:Class="Invi_2._0.Views.AppMainWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Invi_2._0.Views" xmlns:hc="https://handyorg.github.io/handycontrol" xmlns:viewmodels="clr-namespace:Invi_2._0.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="704"
+      Title="INVI">
+
+    <Page.DataContext>
+        <viewmodels:AppNavigationViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        
+        <Grid Background="#525151" HorizontalAlignment="Left" VerticalAlignment="Center">
+
+        </Grid>
+        
+        <hc:ScrollViewer Style="{StaticResource ScrollViewerUpDown}" >
+            <StackPanel Orientation="Horizontal">
+                <ToggleButton  Margin="10,23" Height="40" Width="40" VerticalAlignment="Top" IsChecked="{Binding IsOpen,ElementName=DrawerLeft}" hc:IconElement.Geometry="{StaticResource DragHorizontalGeometry}"/>
+                <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
+                <hc:Drawer Name="DrawerLeft" Dock="Left" MaskCanClose="False" ShowMode="Press">
+                    <Border Background="{DynamicResource RegionBrush}" Width="300" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical" >
+                                    <Button Name="Nome" Content="Главная" Margin="5"  Width="250" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
+                                    <Button  Content="Все устройста" Margin="5" Width="250" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
+                                    <Button  Content="Настройки" Margin="5"  Width="250" hc:IconElement.Geometry="{StaticResource DragHorizontalGeometry}"/>
+                                </StackPanel>
+                                <Button  Command="hc:ControlCommands.Close" Grid.Row="0"  HorizontalAlignment="Right" Height="100"  Foreground="{DynamicResource PrimaryTextBrush}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </hc:Drawer>
+            </StackPanel>
+        </hc:ScrollViewer>
+    </Grid>
+</Page>

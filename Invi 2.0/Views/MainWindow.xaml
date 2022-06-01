@@ -8,59 +8,43 @@
         xmlns:viewmodels="clr-namespace:Invi_2._0.ViewModels"
         x:Class="Invi_2._0.MainWindow"
         mc:Ignorable="d"
+        WindowStyle="None"
         Title="INVI" Height="800" Width="704">
 
     <Window.DataContext>
         <viewmodels:NavigationViewModel/>
     </Window.DataContext>
 
-    <Grid Background="#FF1C1C1C" >
-        <hc:ScrollViewer Style="{StaticResource ScrollViewerUpDown}" >
-            <StackPanel Orientation="Horizontal">
-                <ToggleButton  Margin="20,25" Height="40" Width="40" VerticalAlignment="Top"  IsChecked="{Binding IsOpen,ElementName=DrawerLeft}">
-                    <ToggleButton.Background>
-                        <ImageBrush ImageSource="/Icons/gear.png" TileMode="None" Stretch="Fill"/>
-                    </ToggleButton.Background>
-                </ToggleButton>
+    <Grid Background="#FF1C1C1C" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown" >
+        <StackPanel Orientation="Vertical">
+            <Grid Height="" Width="200" Background="Gray"  HorizontalAlignment="Center" VerticalAlignment="Top" >
+                <Label Content="Invi" HorizontalAlignment="Left"/>
+                <ToggleButton x:Name="Turn" HorizontalAlignment="Right" Margin="25,0" Width="20"  Height="20" Click="Turn_Click"  hc:IconElement.Geometry="{StaticResource DragHorizontalGeometry}"/>
+                <ToggleButton x:Name="Exit" HorizontalAlignment="Right" Width="20" Height="20" Click="Exit_Click" hc:IconElement.Geometry="{StaticResource CloseGeometry}"/>
+            </Grid>
 
-                <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden">
-                    
-                </Frame>
+            <hc:ScrollViewer Style="{StaticResource ScrollViewerUpDown}" >
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton  Margin="20,25" Height="40" Width="40" VerticalAlignment="Top" IsChecked="{Binding IsOpen,ElementName=DrawerLeft}" hc:IconElement.Geometry="{StaticResource DragHorizontalGeometry}"/>
 
-                <hc:Drawer Name="DrawerLeft" Dock="Left" MaskCanClose="False" ShowMode="Press">
-                    <Border Background="{DynamicResource RegionBrush}" Width="300" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}">
-                        <Grid>
-                            <StackPanel Orientation="Horizontal">
-                                <hc:SideMenu  ExpandMode="Freedom" BorderThickness="1" Width="200" Margin="32">
-                                    <hc:Interaction.Triggers>
-                                        <hc:EventTrigger EventName="SelectionChanged">
-                                            <hc:EventToCommand Command="{Binding SwitchItemCmd}" PassEventArgsToCommand="True" />
-                                        </hc:EventTrigger>
-                                    </hc:Interaction.Triggers>
-                                    <hc:SideMenuItem Header="Overview">
-                                        <hc:SideMenuItem.Background>
-                                            <ImageBrush/>
-                                        </hc:SideMenuItem.Background>
-                                        <hc:SideMenuItem.Icon >
-                                            <Button Command="{Binding UnLogin}"/>
-                                        </hc:SideMenuItem.Icon>
-                                        <hc:SideMenuItem Header="Home" Command="{Binding SelectCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
-                                            <Button Command="{Binding UnLogin}"/>
-                                        </hc:SideMenuItem>
-                                        <hc:SideMenuItem Header="Profile" Command="{Binding SelectCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
+                    <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
 
-                                        </hc:SideMenuItem>
-                                        <hc:SideMenuItem Header="Settings" Command="{Binding SelectCmd}" CommandParameter="{Binding Header,RelativeSource={RelativeSource Self}}">
-
-                                        </hc:SideMenuItem>
-                                    </hc:SideMenuItem>
-                                </hc:SideMenu>
-                                <Button  Command="hc:ControlCommands.Close" Grid.Row="0"  HorizontalAlignment="Right" Height="100"  Foreground="{DynamicResource PrimaryTextBrush}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </hc:Drawer>
-            </StackPanel>
-        </hc:ScrollViewer>
+                    <hc:Drawer Name="DrawerLeft" Dock="Left" MaskCanClose="False" ShowMode="Press">
+                        <Border Background="{DynamicResource RegionBrush}" Width="300" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}">
+                            <Grid>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Vertical" >
+                                        <Button Name="Nome" Content="Главная" Margin="5"  Width="250" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
+                                        <Button  Content="Все устройста" Margin="5" Width="250" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
+                                        <Button  Content="Настройки" Margin="5"  Width="250" hc:IconElement.Geometry="{StaticResource DragHorizontalGeometry}"/>
+                                    </StackPanel>
+                                    <Button  Command="hc:ControlCommands.Close" Grid.Row="0"  HorizontalAlignment="Right" Height="100"  Foreground="{DynamicResource PrimaryTextBrush}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </hc:Drawer>
+                </StackPanel>
+            </hc:ScrollViewer>
+        </StackPanel>
     </Grid>
 </Window>

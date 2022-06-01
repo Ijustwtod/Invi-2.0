@@ -103,7 +103,6 @@
                                                                         <Button HorizontalAlignment="Center" Margin="5"  Content="Принять"  Command="{Binding TemperatureSwap}" />
                                                                     </StackPanel>
                                                                 </Border>
-
                                                             </StackPanel>
                                                         </Grid>
                                                     </hc:TabItem>

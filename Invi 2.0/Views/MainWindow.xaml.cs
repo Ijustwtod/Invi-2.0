@@ -25,5 +25,21 @@ namespace Invi_2._0
         {
             InitializeComponent();
         }
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application app = Application.Current;
+            app.Shutdown();
+        }
+
+        private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Turn_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
+
     }
 }

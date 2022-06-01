@@ -35,7 +35,9 @@ namespace Invi_2._0.ViewModels
             DevicesPage = new Views.DevisesPage();
             StartPage = new Views.StartPage();
 
-            if (User.qauthtoken!="")
+            UserModel user = new UserModel();
+
+            if (user.SearchUser())
             {
                 CurrentPage = DevicesPage;
             }

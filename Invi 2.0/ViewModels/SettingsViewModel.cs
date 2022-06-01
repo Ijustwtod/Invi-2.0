@@ -7,9 +7,8 @@ using System.Windows.Input;
 
 namespace Invi_2._0.ViewModels
 {
-    class AuthPageViewModel : INotifyPropertyChanged
+    class SettingsViewModel : INotifyPropertyChanged
     {
-        private UserModel UserModel;
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
@@ -18,25 +17,16 @@ namespace Invi_2._0.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
         }
-
-        private string _code;
-        public string Code
-        {
-            get { return _code; }
-            set { _code = value; OnPropertyChanged(nameof(Code)); }
-        }
-
-        WebBrowserWindow webBrowserWindow = new WebBrowserWindow();
-
-        public ICommand Login
+        UserModel userModel = new UserModel();
+        public ICommand UnLogin
         {
             get
             {
                 return new DelegateСommand((obj) =>
                 {
-                    webBrowserWindow.ShowDialog();
                     if (User.qauthtoken != " ")
                     {
+                        userModel.DeleteUser();
                         System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                         Application.Current.Shutdown();
                     }
@@ -44,23 +34,6 @@ namespace Invi_2._0.ViewModels
             }
         }
 
-        public AuthPageViewModel()
-        {
-            UserModel = new UserModel();
-        }
 
-        public ICommand Save
-        {
-            get
-            {
-                return new DelegateСommand((obj) =>
-                {
-                    if (Code != "")
-                    {
-                        UserModel.CreateUser(Code);
-                    }
-                });
-            }
-        }
     }
 }

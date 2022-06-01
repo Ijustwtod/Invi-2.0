@@ -17,21 +17,46 @@
         <Grid Background="#525151" HorizontalAlignment="Left" VerticalAlignment="Center">
 
         </Grid>
-        
         <hc:ScrollViewer Style="{StaticResource ScrollViewerUpDown}" >
             <StackPanel Orientation="Horizontal">
-                <ToggleButton  Margin="10,23" Height="40" Width="40" VerticalAlignment="Top" IsChecked="{Binding IsOpen,ElementName=DrawerLeft}" hc:IconElement.Geometry="{StaticResource DragHorizontalGeometry}"/>
+                <Grid  Height="800" Width="70" Background="#FF1C1C1C" VerticalAlignment="Top">
+                    <StackPanel  Margin="10,23">
+                        <ToggleButton Margin="0,5"  Height="40" Width="47" VerticalAlignment="Top" IsChecked="{Binding IsOpen,ElementName=DrawerLeft}" hc:IconElement.Geometry="{StaticResource DragHorizontalGeometry}">
+                            <hc:Poptip.Instance>
+                                <hc:Poptip Content="Меню" PlacementType="Right"/>
+                            </hc:Poptip.Instance>
+                        </ToggleButton>
+
+                        <ToggleButton Margin="0,5" Command="{Binding LoadAllMainDevicePage}" Height="40" Width="47" VerticalAlignment="Top" hc:IconElement.Geometry="{StaticResource PageModeGeometry}">
+                            <hc:Poptip.Instance>
+                                <hc:Poptip Content="Главное окно" PlacementType="Right"/>
+                            </hc:Poptip.Instance>
+                        </ToggleButton>
+
+                        <ToggleButton Margin="0,5" Command="{Binding LoadAllDevicePage}"  Height="40" Width="47" VerticalAlignment="Top" hc:IconElement.Geometry="{StaticResource TwoPageModeGeometry}">
+                            <hc:Poptip.Instance>
+                                <hc:Poptip Content="Все утройства" PlacementType="Right"/>
+                            </hc:Poptip.Instance>
+                        </ToggleButton>
+
+                        <ToggleButton Margin="0,5"  Command="{Binding LoadSettings}" Height="40" Width="47" VerticalAlignment="Top" hc:IconElement.Geometry="{StaticResource ConfigGeometry}">
+                            <hc:Poptip.Instance>
+                                <hc:Poptip Content="Настройки" PlacementType="Right"/>
+                            </hc:Poptip.Instance>
+                        </ToggleButton>
+                    </StackPanel>
+                </Grid>
                 <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
-                <hc:Drawer Name="DrawerLeft" Dock="Left" MaskCanClose="False" ShowMode="Press">
-                    <Border Background="{DynamicResource RegionBrush}" Width="300" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}">
+                <hc:Drawer Name="DrawerLeft" Dock="Left" MaskCanClose="True" ShowMode="Cover">
+                    <Border Background="{DynamicResource RegionBrush}" Width="200" Margin="0,35,0,0" VerticalAlignment="Stretch"  BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}">
                         <Grid>
                             <StackPanel Orientation="Horizontal">
-                                <StackPanel Orientation="Vertical" >
-                                    <Button Name="Nome" Content="Главная" Margin="5"  Width="250" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
-                                    <Button  Content="Все устройста" Margin="5" Width="250" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
-                                    <Button  Content="Настройки" Margin="5"  Width="250" hc:IconElement.Geometry="{StaticResource DragHorizontalGeometry}"/>
+                                <StackPanel Orientation="Vertical" Margin="0,22" >
+                                    <Button  Name="Nome" HorizontalContentAlignment="Left" Content="Назад" Margin="5" Height="40" Width="150" hc:IconElement.Geometry="{StaticResource LeftGeometry}" Command="hc:ControlCommands.Close"/>
+                                    <Button  Command="{Binding LoadAllMainDevicePage}" Content="Главная" HorizontalContentAlignment="Left"  Margin="5" Height="40"  Width="150" hc:IconElement.Geometry="{StaticResource PageModeGeometry}"/>
+                                    <Button  Command="{Binding LoadAllDevicePage}" Content="Все устройста" HorizontalContentAlignment="Left"  Margin="5" Height="40"  Width="150" hc:IconElement.Geometry="{StaticResource TwoPageModeGeometry}"/>
+                                    <Button  Command="{Binding LoadSettings}" Content="Настройки" HorizontalContentAlignment="Left"  Margin="5"  Height="40"  Width="150" hc:IconElement.Geometry="{StaticResource ConfigGeometry}"/>
                                 </StackPanel>
-                                <Button  Command="hc:ControlCommands.Close" Grid.Row="0"  HorizontalAlignment="Right" Height="100"  Foreground="{DynamicResource PrimaryTextBrush}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
                             </StackPanel>
                         </Grid>
                     </Border>

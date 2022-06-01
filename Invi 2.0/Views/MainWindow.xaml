@@ -18,9 +18,9 @@
 
     <Grid Background="#FF1C1C1C" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown" >
         <StackPanel Orientation="Vertical">
-            <Grid Height="35" Width="704" Background="#525151"  HorizontalAlignment="Center" VerticalAlignment="Top" >
+            <Grid Height="35" Width="704" Background="#FF1C1C1C"  HorizontalAlignment="Center" VerticalAlignment="Top" >
                 <Label Content="Invi" HorizontalAlignment="Left"/>
-                <ToggleButton x:Name="Turn" HorizontalAlignment="Right" Margin="55,0" Width="30"  Height="30" Click="Turn_Click"  hc:IconElement.Geometry="{StaticResource DragHorizontalGeometry}"/>
+                <ToggleButton x:Name="Turn" HorizontalAlignment="Right" Margin="55,0" Width="30"  Height="30" Click="Turn_Click"  hc:IconElement.Geometry="{StaticResource WindowMinGeometry}"/>
                 <ToggleButton x:Name="Exit" HorizontalAlignment="Right" Width="30" Margin="20,0" Height="30" Click="Exit_Click" hc:IconElement.Geometry="{StaticResource CloseGeometry}"/>
             </Grid>
             <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>

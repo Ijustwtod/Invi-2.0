@@ -1,0 +1,40 @@
+﻿<Page x:Class="Invi_2._0.Views.AllDevicePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:hc="https://handyorg.github.io/handycontrol"
+      xmlns:local="clr-namespace:Invi_2._0.Views" xmlns:viewmodels="clr-namespace:Invi_2._0.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AllDevicePage">
+
+    <Page.DataContext>
+        <viewmodels:MainViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <StackPanel>
+            <DataGrid HeadersVisibility="None" ItemsSource="{Binding Root.devices}" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Hidden" SelectedItem="{Binding SelectedDevices}" IsSynchronizedWithCurrentItem="False" >
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                                    <TextBlock  Text="{Binding name ,Mode=TwoWay}" Margin="0,0,0,0" Width="200"/>
+                                    <TextBlock  Text="{Binding capabilities[0].state.value ,Mode=TwoWay}" Width="200" Margin="10,0,0,0" HorizontalAlignment="Center"/>
+                                    <ToggleButton  IsChecked="{Binding capabilities[0].state.value ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}},Path=DataContext.OnOffLamp}" Style="{StaticResource ToggleButtonSwitch}"/>
+                                    <ToggleButton  Margin="20,0" Height="40" Width="40" IsChecked="{Binding IsOpen,ElementName=DrawerRight}">
+                                        <ToggleButton.Background>
+                                            <ImageBrush ImageSource="/Icons/gear.png" TileMode="None" Stretch="Uniform"/>
+                                        </ToggleButton.Background>
+                                    </ToggleButton>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

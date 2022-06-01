@@ -13,8 +13,9 @@ namespace Invi_2._0.ViewModels
 {
      class AppNavigationViewModel : INotifyPropertyChanged
     {
-        private Page DevicesPage;
-       
+        private Page MainDevicePage;
+        private Page SettingsPage;
+        private Page AllDevicePage;
         private Page _currentPage;
         public Page CurrentPage
         {
@@ -35,9 +36,45 @@ namespace Invi_2._0.ViewModels
 
         public AppNavigationViewModel()
         {
-            DevicesPage = new Views.DevisesPage();
-            CurrentPage = DevicesPage;
+            MainDevicePage = new Views.MainDevicePage();
+            AllDevicePage = new Views.AllDevicePage();
+            SettingsPage = new Views.SettingsPage();
+            CurrentPage = MainDevicePage;
         }
+
+        public ICommand LoadAllDevicePage
+        {
+            get
+            {
+                return new DelegateСommand(async (obj) =>
+                {
+                    CurrentPage = AllDevicePage;
+                });
+            }
+        }
+
+        public ICommand LoadAllMainDevicePage
+        {
+            get
+            {
+                return new DelegateСommand(async (obj) =>
+                {
+                    CurrentPage = MainDevicePage;
+                });
+            }
+        }
+
+        public ICommand LoadSettings
+        {
+            get
+            {
+                return new DelegateСommand(async (obj) =>
+                {
+                    CurrentPage = SettingsPage;
+                });
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

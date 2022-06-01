@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Invi_2._0.Views
 {
     /// <summary>
-    /// Логика взаимодействия для DevisesPage.xaml
+    /// Логика взаимодействия для SettingsPage.xaml
     /// </summary>
-    public partial class DevisesPage : Page
+    public partial class SettingsPage : Page
     {
-        public DevisesPage()
+        public SettingsPage()
         {
             InitializeComponent();
         }

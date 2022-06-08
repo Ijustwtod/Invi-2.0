@@ -14,7 +14,7 @@ using System;
 
 namespace Invi_2._0.ViewModels
 {
-    class MainViewModel : INotifyPropertyChanged
+    class MainDeviceViewModel : INotifyPropertyChanged
     {
         private PostQuerry PostQuerry;
 
@@ -89,7 +89,7 @@ namespace Invi_2._0.ViewModels
             }
         }
 
-        public MainViewModel()
+        public MainDeviceViewModel()
         {
             PostQuerry = new PostQuerry();
         }

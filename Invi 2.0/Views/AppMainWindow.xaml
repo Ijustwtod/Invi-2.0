@@ -21,7 +21,7 @@
             <StackPanel Orientation="Horizontal">
                 <Grid  Height="800" Width="70" Background="#FF1C1C1C" VerticalAlignment="Top">
                     <StackPanel  Margin="10,23">
-                        <ToggleButton Margin="0,5"  Height="40" Width="47" VerticalAlignment="Top" IsChecked="{Binding IsOpen,ElementName=DrawerLeft}" hc:IconElement.Geometry="{StaticResource DragHorizontalGeometry}">
+                        <ToggleButton Margin="0,5"  Height="40" Width="47" VerticalAlignment="Top" IsChecked="{Binding IsOpen,ElementName=DrawerLeft}" hc:IconElement.Geometry="{StaticResource AllGeometry}">
                             <hc:Poptip.Instance>
                                 <hc:Poptip Content="Меню" PlacementType="Right"/>
                             </hc:Poptip.Instance>

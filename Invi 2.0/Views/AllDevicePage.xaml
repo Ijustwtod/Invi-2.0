@@ -10,7 +10,7 @@
       Title="AllDevicePage">
 
     <Page.DataContext>
-        <viewmodels:MainViewModel/>
+        <viewmodels:MainDeviceViewModel/>
     </Page.DataContext>
 
     <Grid>

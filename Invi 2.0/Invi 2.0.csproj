@@ -134,7 +134,7 @@
     <Compile Include="Models\GetQuerry.cs" />
     <Compile Include="Models\PostQuerry.cs" />
     <Compile Include="Models\DelegateСommand.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MainDeviceViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="Views\MainDevicePage.xaml.cs">
       <DependentUpon>MainDevicePage.xaml</DependentUpon>
